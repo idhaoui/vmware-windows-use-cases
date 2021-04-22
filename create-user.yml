@@ -1,0 +1,12 @@
+---
+
+- name: Playbook to create user on Windows
+  hosts: all
+  tasks:
+    - name: Create user
+      win_user:
+        name: "{{USERNAME}}"
+        password: "{{PASSWORD}}"
+        state: present
+        groups:
+          - Users

@@ -1,0 +1,31 @@
+---
+- name: Create a VM from a template
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  - name: Deploy a Virtual Machine
+    vmware_guest:
+      hostname: "{{ lookup('env','VMWARE_HOST') }}"
+      username: "{{ lookup('env','VMWARE_USER') }}"
+      password: "{{ lookup('env','VMWARE_PASSWORD') }}"
+      validate_certs: "{{ lookup('env','VMWARE_VALIDATE_CERTS') }}"
+      name: "{{ vm_name }}"
+      template: "{{ vm_template }}"
+      datacenter: "{{ dc_name }}"
+      state: poweredon
+      networks:
+        - name: "{{ network_name }}"
+          type: static
+          ip: "{{ ip_address }}"
+          netmask: "{{ ip_netmask }}"
+          gateway: "{{ dns_ip_address }}"
+      customization:
+        dns_servers:
+          - "{{ dns_ip_address }}"
+      folder: "{{ folder_path }}"
+      cluster: "{{ cluster_name }}"
+      hardware:
+        memory_mb: "{{ ram_size }}"
+        num_cpus: "{{ cpu_number }}"
+      wait_for_ip_address: yes
+
