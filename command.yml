@@ -9,4 +9,4 @@
 
     - name: Print return information from the previous task
       ansible.builtin.debug:
-        msg: "{{ whoami_out }}"
+        stdout: "{{ whoami_out }}"
