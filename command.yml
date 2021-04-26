@@ -3,7 +3,7 @@
 - name: Run Command on Windows
   hosts: all
   tasks:
-    - name: Run whomi
+    - name: Run whoami
       ansible.windows.win_command: whoami
       register: whoami_out
 
