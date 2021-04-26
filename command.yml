@@ -6,7 +6,4 @@
     - name: Run whoami
       ansible.windows.win_command: whoami
       register: whoami_out
-
-    - name: Print return information from the previous task
-      ansible.builtin.debug:
-        msg: "{{ whoami_out }}"
+      debug: var=output.stdout
