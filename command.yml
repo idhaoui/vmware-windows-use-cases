@@ -5,5 +5,5 @@
   tasks:
     - name: Run whoami
       ansible.windows.win_command: whoami
-      register: whoami_out
-      debug: var=whoami_out.stdout
+        register: whoami_out
+        debug: var=whoami_out.stdout
