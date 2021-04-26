@@ -8,4 +8,5 @@
         register: whoami_out
         
     - name: Print return information from the previous task
-       ansible.builtin.debug: var=whoami_out.stdout
+       ansible.builtin.debug:
+         var: whoami_out.stdout
