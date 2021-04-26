@@ -1,0 +1,8 @@
+---
+
+- name: Run Command on Windows
+  hosts: all
+  tasks:
+    - name: Run whomi
+      ansible.windows.win_command: whoami
+      register: whoami_out
